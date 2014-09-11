@@ -51,6 +51,47 @@ public class CarrierWave {
                 Arrays.fill(buffer, start, start + length, 127);
         }
         
+        /*
+        
+        byte left[] = new byte[44100];
+        
+        //setup clock - should be 90 degrees out of phase with data line
+        for(byte i = 0; i < 8; i++)
+        {
+            int length = 88200 / 8;
+            int start = i * length - (length / 2);
+            
+            if(i == 0)
+                Arrays.fill(left, start, start + (length / 2), 0);
+            else if(i % 2 == 0) //even
+                Arrays.fill(left, start, start + length, 0);
+            else //odd
+                Arrays.fill(left, start, start + length, 127);
+        }
+        
+        byte right[] = new byte[44100];
+        
+        //should equal 85 decimal if clocked correctly into Arduino
+        for(byte i = 0; i < 8; i++)
+        {
+            int length = 88200 / 8;
+            int start = i * length;
+            
+            if(i % 2 == 0) //even
+                Arrays.fill(right, start, start + length, 0);
+            else //odd
+                Arrays.fill(right, start, start + length, 127);
+        }
+        
+        //interleave left and right channels into buffer array
+        for(int i = 0; i < left.length; i++)
+        {
+            buffer[i * 2] = left[i];
+            buffer[(i * 2) + 1] = right[i];
+        }
+        
+        */
+        
         //write data here
         //possibly need to call reloadStaticData() method here
         track.write(buffer, 0, buffer.length);
