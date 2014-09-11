@@ -15,8 +15,19 @@ public class CarrierWave {
 
     private AudioTrack track;
 
-    public CarrierWave() {
-        byte time = 1; //seconds
+    public CarrierWave()
+    {
+        //frequency of square wave will be equal to (1 / time) * 8
+        //1.00 seconds = 8 Hz
+        //0.10 seconds = 80 Hz
+        //0.01 seconds = 800 Hz
+        //not sure what max frequency is (to be tested later), but from past experientation using high frequencies resulted in the wave corners start to get rounded off
+        //at a high enough frequency the sqare wave looks more like a sine wave then a square wave
+        //this is due to filtering hardware inside tablet/phone since no audio jack cirucitry is built to output smooth sinusoidal waves not harsh square waves
+        //may be device dependent, so may need tweaking, but we will start will lower frequences to make it as compatible as possible
+        //I am hoping to attain 800 Hz for standard usage cause 8 Hz will be way to slow to be useful
+        
+        byte time = 1; //seconds (time used up to send 8 bits of data)
         byte resolution = 1; //bytes per sample (1 byte = 8 bits, 2 bytes = 16 bits)
         int sampleRate = 44100; //samples per second
         byte channels = 2; //unitless scalor
