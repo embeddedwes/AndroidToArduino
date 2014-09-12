@@ -4,6 +4,8 @@ import android.media.AudioFormat;
 import android.media.AudioManager;
 import android.media.AudioTrack;
 
+import java.util.Arrays;
+
 /**
  * Created by Wes on 9/11/2014.
  */
@@ -57,9 +59,9 @@ public class CarrierWave {
             int start = i * length;
             
             if(i % 2 == 0) //even
-                Arrays.fill(buffer, start, start + length, 0);
+                Arrays.fill(buffer, start, start + length, (byte)0);
             else //odd
-                Arrays.fill(buffer, start, start + length, 127);
+                Arrays.fill(buffer, start, start + length, (byte)127);
         }
         
         /*
