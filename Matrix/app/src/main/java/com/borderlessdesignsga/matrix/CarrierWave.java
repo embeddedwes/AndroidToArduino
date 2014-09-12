@@ -34,7 +34,8 @@ public class CarrierWave {
         int sampleRate = 44100; //samples per second
         byte channels = 2; //unitless scalor
         
-        int bufferSize = time * resolution * sampleRate * channels; //bytes
+        //int bufferSize = time * resolution * sampleRate * channels; //bytes
+        int bufferSize = 80;
         
         track = new AudioTrack(AudioManager.STREAM_MUSIC, sampleRate, AudioFormat.CHANNEL_OUT_STEREO, AudioFormat.ENCODING_PCM_8BIT, bufferSize, AudioTrack.MODE_STATIC);
     }
@@ -45,7 +46,7 @@ public class CarrierWave {
         data += 128;
         
         //buffer to hold data
-        byte buffer[] = new byte[88200];
+        byte buffer[] = new byte[80];
         
         //note we will only be using half of the available range since we don't want to put negative voltage into Arduino pins
         //so out range is really from 0 to 127 (so 7 bits of accuracy, which should be plenty for a digital system)
@@ -55,7 +56,8 @@ public class CarrierWave {
         //this is a frequency of 8Hz, which of course can be sped up considerable to improve data throughput, but we'll keep it slow for testing purposes
         for(byte i = 0; i < 8; i++)
         {
-            int length = 88200 / 8;
+            //int length = 88200 / 8;
+            int length = 10;
             int start = i * length;
             
             if(i % 2 == 0) //even
