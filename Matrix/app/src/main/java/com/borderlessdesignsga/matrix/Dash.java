@@ -2,6 +2,7 @@ package com.borderlessdesignsga.matrix;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,8 +19,22 @@ public class Dash extends Activity {
         final Button button = (Button) findViewById(R.id.square_wave_burst);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                CarrierWave wave = new CarrierWave();
-                wave.send((byte)0);
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        while(true)
+                        {
+                            Log.d("wes","loop");
+                            CarrierWave wave = new CarrierWave();
+                            wave.send(0);
+                            try {
+                                Thread.sleep(10,0);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                }).start();
             }
         });
     }
