@@ -7,34 +7,57 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 
 public class Dash extends Activity {
+
+    private boolean loopRunning = false;
+    private Thread thread;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dash);
 
+        final TextView textStatus = (TextView) findViewById(R.id.threadStatus);
+        textStatus.setText("Thread Stopped");
+
         final Button button = (Button) findViewById(R.id.square_wave_burst);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                new Thread(new Runnable() {
+                thread = new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        while(true)
+                        while(loopRunning)
                         {
                             Log.d("wes","loop");
-                            CarrierWave wave = new CarrierWave();
-                            wave.send(0);
+                            //CarrierWave wave = new CarrierWave();
+                            //wave.send(0);
                             try {
-                                Thread.sleep(10,0);
+                                Thread.sleep(1000,0);
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                             }
                         }
                     }
-                }).start();
+                });
+
+                if(loopRunning == false) {
+                    loopRunning = true;
+                    textStatus.setText("Thread Running");
+                    thread.start();
+                }
+                else
+                {
+                    loopRunning = false;
+                    try {
+                        thread.join();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    textStatus.setText("Thread Stopped");
+                }
             }
         });
     }
