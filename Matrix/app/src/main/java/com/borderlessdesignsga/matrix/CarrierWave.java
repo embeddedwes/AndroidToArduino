@@ -44,7 +44,7 @@ public class CarrierWave {
 
         AudioTrack track = null;
 
-        Log.d("wes","init");
+        //Log.d("wes","init");
 
         try {
             track = new AudioTrack(AudioManager.STREAM_MUSIC, sampleRate, AudioFormat.CHANNEL_OUT_STEREO, AudioFormat.ENCODING_PCM_8BIT, bufferSize, AudioTrack.MODE_STATIC);
@@ -137,7 +137,7 @@ public class CarrierWave {
         track.play();
         track.release();
 
-        Log.d("wes","done");
+        //Log.d("wes","done");
 
         return true;
     }

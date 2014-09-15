@@ -31,11 +31,11 @@ public class Dash extends Activity {
                     public void run() {
                         while(loopRunning)
                         {
-                            Log.d("wes","loop");
-                            //CarrierWave wave = new CarrierWave();
-                            //wave.send(0);
+                            //Log.d("wes","loop");
+                            CarrierWave wave = new CarrierWave();
+                            wave.send(0);
                             try {
-                                Thread.sleep(1000,0);
+                                Thread.sleep(10);
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                             }
