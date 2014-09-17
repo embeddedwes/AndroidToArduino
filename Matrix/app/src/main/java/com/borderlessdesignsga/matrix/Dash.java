@@ -26,6 +26,12 @@ public class Dash extends Activity {
         final Button button = (Button) findViewById(R.id.square_wave_burst);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                
+                //send sequence of bytes to represent data
+                //probably a start byte of alternating bits
+                //category byte for which part of car we will be changing
+                //data byte (possibly multiple go here)
+                
                 thread = new Thread(new Runnable() {
                     @Override
                     public void run() {
