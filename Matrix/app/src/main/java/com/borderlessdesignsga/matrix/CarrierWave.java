@@ -21,6 +21,45 @@ public class CarrierWave {
     {
 
     }
+    
+    public boolean sendUART(int data)
+    {
+        //used this as a reference
+        //http://tutorial.cytron.com.my/2012/02/16/uart-universal-asynchronous-receiver-and-transmitter/
+        
+        //8 data bits
+        //1 start bit
+        //odd or even parity bit
+        //1 or 2 stop bit
+        
+        //test differences between double and float!
+        
+        int baud = 9600;
+        double bitPeriod = 1/baud;
+        
+        byte parityCounter = 0;
+        
+        //line should be idling HIGH
+        
+        //set LOW
+        //wait bitPeriod seconds
+        for(byte i = 0; i < 8; i++)
+        {
+            //write data one bit at a time LSB first
+            //wait bitPeriod seconds
+            
+            //calc parity bit
+            //if HIGH then increment parityCounter
+        }
+        //write parity bit
+        //even
+        //if parityCounter == even # then write HIGH else write LOW
+        //odd
+        //if parityCounter == odd # then write HIGH else write LOW
+        
+        //wait bitPeriod seconds
+        //push line HIGH again (stop bit will be sampled by receiving device shortly after)
+    }
 
     public boolean send(int data)
     {
