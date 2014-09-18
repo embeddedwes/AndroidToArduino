@@ -56,7 +56,7 @@ public class CarrierWave {
         if(track == null) { return false; }
         
         //buffer to hold data
-        byte buffer[] = new byte[80];
+        byte buffer[] = new byte[bufferSize];
         
         //note we will only be using half of the available range since we don't want to put negative voltage into Arduino pins
         //so out range is really from 0 to 127 (so 7 bits of accuracy, which should be plenty for a digital system)
@@ -67,7 +67,7 @@ public class CarrierWave {
         for(byte i = 0; i < 8; i++)
         {
             //int length = 88200 / 8;
-            int length = 10;
+            int length = bufferSize / 8;
             int start = i * length;
             
             if(i % 2 == 0) //even
