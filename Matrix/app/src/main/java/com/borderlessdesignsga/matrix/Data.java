@@ -7,12 +7,12 @@ public class Data {
 
     public static final int PROTOCOL_UART = 0;
     public static final int PROTOCOL_I2C = 1;
-    public static final int PROTOCOL_SPI = 2;
-    public static final int PROTOCOL_CUSTOM = 3;
+    //public static final int PROTOCOL_CUSTOM = 2;
 
+    //The speeds below are bits per second
     public static final int SPEED_SLOW = 1200;
-    public static final int SPEED_MED = 4800;
-    public static final int SPEED_FAST = 9600;
+    public static final int SPEED_MED = 2400;
+    public static final int SPEED_FAST = 4800;
 
     private int protocol;
     private int speed;
@@ -32,6 +32,8 @@ public class Data {
     {
 
     }
+
+    //possibly setup a buffer and event driven read system too...
 
     public void read()
     {

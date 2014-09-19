@@ -27,15 +27,6 @@ public class Dash extends Activity {
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 
-                //send sequence of bytes to represent data
-                //probably a start byte of alternating bits
-                //category byte for which part of car we will be changing
-                //data byte (possibly multiple go here)
-                
-                //I am exploring building a class to transmit data via UART or possibly SPI or I2C (at slow speeds)
-                //that way Arduino (or other uC) can easily read data coming from app using standard libraries and functions
-                //and I ordered a new scope, so I can finally test my square waves and actualy get back to doing some real code once it arrives!
-                
                 thread = new Thread(new Runnable() {
                     @Override
                     public void run() {

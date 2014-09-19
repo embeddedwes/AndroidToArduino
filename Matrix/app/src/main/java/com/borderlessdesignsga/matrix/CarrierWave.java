@@ -22,7 +22,7 @@ public class CarrierWave {
 
     }
     
-    public boolean sendUART(int data)
+    public void sendUART(int data)
     {
         //used this as a reference
         //http://tutorial.cytron.com.my/2012/02/16/uart-universal-asynchronous-receiver-and-transmitter/
