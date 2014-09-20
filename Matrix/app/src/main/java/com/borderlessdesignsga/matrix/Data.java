@@ -5,48 +5,54 @@ package com.borderlessdesignsga.matrix;
  */
 public class Data {
 
-    public static final int PROTOCOL_UART = 0;
-    public static final int PROTOCOL_I2C = 1;
-    //public static final int PROTOCOL_CUSTOM = 2;
+    public enum Protocol {
+        UART, I2C, CUSTOM
+    }
 
-    //The speeds below are bits per second
-    public static final int SPEED_SLOW = 1200;
-    public static final int SPEED_MED = 2400;
-    public static final int SPEED_FAST = 4800;
-
-    private int protocol;
-    private int speed;
+    private Protocol protocol;
+    private int baud;
 
     public Data()
     {
-        this(PROTOCOL_UART, SPEED_MED);
+        this(Protocol.UART, 2400);
     }
 
-    public Data(int protocol, int speed)
+    public Data(Protocol protocol)
+    {
+        this(protocol, 2400);
+    }
+
+    public Data(int baud)
+    {
+        this(Protocol.UART, baud);
+    }
+
+    public Data(Protocol protocol, int baud)
     {
         this.protocol = protocol;
-        this.speed = speed;
+        this.baud = (baud > 4800) ? 4800 : baud;
     }
 
-    public void send()
+    public void send(int data)
     {
+        //build audio sample based off of needed data and set protocol and baud
+        //will use helper functions so users can easily override this function for CUSTOM protocol
 
+        //create AudioTrack and play sample via proper methods
+        //also abstracted to helper method
+
+        //may use specific class to house all helper methods
     }
 
-    //possibly setup a buffer and event driven read system too...
+    //reading from Arduino will go here... send first priority though
 
-    public void read()
-    {
-
-    }
-
-    public int getProtocol()
+    public Protocol getProtocol()
     {
         return protocol;
     }
 
     public int getSpeed()
     {
-        return speed;
+        return baud;
     }
 }

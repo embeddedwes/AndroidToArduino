@@ -14,11 +14,14 @@ public class Dash extends Activity {
 
     private boolean loopRunning = false;
     private Thread thread;
+    private Data data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dash);
+
+        data = new Data();
 
         final TextView textStatus = (TextView) findViewById(R.id.threadStatus);
         textStatus.setText("Thread Stopped");
