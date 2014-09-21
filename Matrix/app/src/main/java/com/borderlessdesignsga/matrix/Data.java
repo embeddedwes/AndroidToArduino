@@ -33,15 +33,36 @@ public class Data {
         this.baud = (baud > 4800) ? 4800 : baud;
     }
 
-    public void send(int data)
+    public boolean send(int data)
     {
-        //build audio sample based off of needed data and set protocol and baud
-        //will use helper functions so users can easily override this function for CUSTOM protocol
+        /*build audio sample based off of needed data and set protocol and baud
+        will use helper functions so users can easily override this function
+        for CUSTOM protocol*/
 
-        //create AudioTrack and play sample via proper methods
-        //also abstracted to helper method
+        byte bitLength = 9; //number of samples that make one bit
 
-        //may use specific class to house all helper methods
+        byte bitCount;
+        switch(protocol)
+        {
+            case UART:
+                bitCount = 10; // 8 data bits, no parity, 1 stop bit
+                break;
+            case I2C:
+                bitCount = 69; //pretty rough estimate, but I think this is the right bit count
+                break;
+            case CUSTOM:
+                bitCount = 8; //not sure yet to be honest
+                break;
+            default:
+                return false;
+        }
+
+        int bufferSize = bitLength * bitCount * 2; //must multiply by two because we have to accommodate for second channel (clock)
+
+        /*create AudioTrack and play sample via proper methods
+        also abstracted to helper method*/
+
+        return true;
     }
 
     //reading from Arduino will go here... send first priority though
