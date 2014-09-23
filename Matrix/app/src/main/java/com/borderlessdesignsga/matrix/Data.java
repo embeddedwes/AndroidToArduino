@@ -4,10 +4,15 @@ import android.media.AudioFormat;
 import android.media.AudioManager;
 import android.media.AudioTrack;
 
+import java.util.Arrays;
+
 /**
  * Created by Wes on 9/19/2014.
  */
 public class Data {
+
+    public static final byte LOW = 0;
+    public static final byte HIGH = 127;
 
     public enum Protocol {
         UART, I2C, CUSTOM
@@ -72,6 +77,30 @@ public class Data {
         }
 
         byte buffer[] = new byte[bufferSize];
+
+        //UART fill with byte equal to 170 (to be checked on scope)
+
+        for(byte i = 0; i < 10; i++)
+        {
+            int start = i * bitLength;
+
+            if(i == 0) {
+                Arrays.fill(buffer, start, start + bitLength, LOW);
+            }
+            else if(i == 9) {
+                Arrays.fill(buffer, start, start + bitLength, HIGH);
+            }
+            else {
+                if(i % 2 == 0) //even
+                {
+                    Arrays.fill(buffer, start, start + bitLength, LOW);
+                }
+                else
+                {
+                    Arrays.fill(buffer, start, start + bitLength, HIGH);
+                }
+            }
+        }
 
         /*create AudioTrack and play sample via proper methods
         also abstracted to helper method*/

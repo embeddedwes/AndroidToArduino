@@ -26,20 +26,20 @@ public class Dash extends Activity {
         final TextView textStatus = (TextView) findViewById(R.id.threadStatus);
         textStatus.setText("Thread Stopped");
 
-        final Button button = (Button) findViewById(R.id.square_wave_burst);
-        button.setOnClickListener(new View.OnClickListener() {
+        final Button buttonPeriodic = (Button) findViewById(R.id.square_wave_periodic);
+        buttonPeriodic.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 
                 thread = new Thread(new Runnable() {
                     @Override
                     public void run() {
+                        Data data;
+                        data = new Data();
                         while(loopRunning)
                         {
-                            //Log.d("wes","loop");
-                            CarrierWave wave = new CarrierWave();
-                            wave.send(0);
+                            data.send(170);
                             try {
-                                Thread.sleep(10);
+                                Thread.sleep(10); //10 milliseconds
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                             }
@@ -62,6 +62,13 @@ public class Dash extends Activity {
                     }
                     textStatus.setText("Thread Stopped");
                 }
+            }
+        });
+
+        final Button buttonBurst = (Button) findViewById(R.id.square_wave_burst);
+        buttonBurst.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                data.send(170);
             }
         });
     }

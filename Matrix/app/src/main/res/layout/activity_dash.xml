@@ -10,10 +10,10 @@
     tools:context=".Dash">
 
     <Button
-        android:id="@+id/square_wave_burst"
+        android:id="@+id/square_wave_periodic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/button_square_wave" />
+        android:text="@string/button_square_wave_periodic" />
 
     <TextView
         android:id="@+id/threadStatus"
@@ -28,5 +28,11 @@
         android:layout_height="wrap_content"
         android:paddingTop="10dp"
         android:minWidth="300dp"/>
+
+    <Button
+        android:id="@+id/square_wave_burst"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_square_wave" />
 
 </LinearLayout>

@@ -4,6 +4,7 @@
     <string name="app_name">Matrix</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="button_square_wave_periodic">Square Wave Periodic</string>
     <string name="button_square_wave">Square Wave Burst</string>
     <string name="placeholder">Placeholder Text</string>
 
