@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 
@@ -22,6 +23,28 @@ public class Dash extends Activity {
         setContentView(R.layout.activity_dash);
 
         data = new Data();
+
+        final TextView bitLengthStatus = (TextView) findViewById(R.id.bitLengthStatus);
+        bitLengthStatus.setText("" + 1);
+
+        final SeekBar bitLengthControl = (SeekBar) findViewById(R.id.bitLengthController);
+
+        bitLengthControl.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            int progressChanged = 0;
+
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser){
+                progressChanged = progress;
+            }
+
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                //do something here with data
+                bitLengthStatus.setText("" +  (progressChanged + 1));
+            }
+        });
 
         final TextView textStatus = (TextView) findViewById(R.id.threadStatus);
         textStatus.setText("Thread Stopped");

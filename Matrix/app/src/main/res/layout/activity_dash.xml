@@ -24,10 +24,20 @@
         android:text="@string/placeholder"/>
 
     <SeekBar
+        android:id="@+id/bitLengthController"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="10dp"
+        android:max="100"
         android:minWidth="300dp"/>
+
+    <TextView
+        android:id="@+id/bitLengthStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingLeft="5dp"
+        android:text="@string/placeholder"/>
 
     <Button
         android:id="@+id/square_wave_burst"
