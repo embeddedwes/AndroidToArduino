@@ -28,7 +28,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="10dp"
-        android:max="100"
+        android:progress="8"
+        android:max="49"
         android:minWidth="300dp"/>
 
     <TextView

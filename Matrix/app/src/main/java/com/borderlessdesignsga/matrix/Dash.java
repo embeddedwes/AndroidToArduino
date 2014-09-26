@@ -16,6 +16,7 @@ public class Dash extends Activity {
     private boolean loopRunning = false;
     private Thread thread;
     private Data data;
+    byte bitLength = 9;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +26,7 @@ public class Dash extends Activity {
         data = new Data();
 
         final TextView bitLengthStatus = (TextView) findViewById(R.id.bitLengthStatus);
-        bitLengthStatus.setText("" + 1);
+        bitLengthStatus.setText("" + 9);
 
         final SeekBar bitLengthControl = (SeekBar) findViewById(R.id.bitLengthController);
 
@@ -42,6 +43,7 @@ public class Dash extends Activity {
 
             public void onStopTrackingTouch(SeekBar seekBar) {
                 //do something here with data
+                bitLength = (byte)(progressChanged + 1);
                 bitLengthStatus.setText("" +  (progressChanged + 1));
             }
         });
@@ -60,7 +62,7 @@ public class Dash extends Activity {
                         data = new Data();
                         while(loopRunning)
                         {
-                            data.send(170);
+                            data.send(170, bitLength);
                             try {
                                 Thread.sleep(10); //10 milliseconds
                             } catch (InterruptedException e) {
@@ -91,7 +93,7 @@ public class Dash extends Activity {
         final Button buttonBurst = (Button) findViewById(R.id.square_wave_burst);
         buttonBurst.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                data.send(170);
+                data.send(170, bitLength);
             }
         });
     }

@@ -42,13 +42,11 @@ public class Data {
         this.baud = (baud > 4800) ? 4800 : baud;
     }
 
-    public boolean send(int data)
+    public boolean send(int data, byte bitLength)
     {
         /*build audio sample based off of needed data and set protocol and baud
         will use helper functions so users can easily override this function
         for CUSTOM protocol*/
-
-        byte bitLength = 9; //number of samples that make one bit
 
         byte bitCount;
         int bufferSize;
