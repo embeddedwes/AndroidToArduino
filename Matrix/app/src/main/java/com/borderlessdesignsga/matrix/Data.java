@@ -103,7 +103,7 @@ public class Data {
         /*create AudioTrack and play sample via proper methods
         also abstracted to helper method*/
         try {
-            track = new AudioTrack(AudioManager.STREAM_MUSIC, 44100, channels, AudioFormat.ENCODING_PCM_8BIT, bufferSize, AudioTrack.MODE_STATIC);
+            track = new AudioTrack(AudioManager.STREAM_MUSIC, 44100, channels, AudioFormat.ENCODING_PCM_8BIT, bufferSize, AudioTrack.MODE_STREAM);
         } catch (IllegalArgumentException e) {
             return false;
         }
